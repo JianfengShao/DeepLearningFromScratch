@@ -60,15 +60,15 @@ batch_size = 100
 train_size = x_train.shape[0]
 iters_num = 10000
 learning_rate = 0.1
-iter_per_epoch = max(train_size/batch_size, 1)
+iter_per_epoch = max(train_size / batch_size, 1)
 
 net = TwoLayerNet(input_size=784, hidden_size=50, output_size=10)
 for i in range(iters_num):
+    print("iter: " + str(i))
     batch_mask = np.random.choice(train_size, batch_size)
     x_batch = x_train[batch_mask]
     t_batch = t_train[batch_mask]
 
-    # grad = net.numerical_gradient(x_batch, t_batch)
     grad = net.numerical_gradient(x_batch, t_batch)
 
     for key in ('W1', 'b1', 'W2', 'b2'):
